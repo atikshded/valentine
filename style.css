@@ -1,0 +1,363 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #ffe0eb, #ffc2d1);
+  font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Main Card */
+.love-card {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px 35px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(255, 77, 109, 0.35);
+  max-width: 360px;
+  animation: softPop 1.2s ease;
+}
+
+@keyframes softPop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.main-img {
+  width: 160px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  color: #ff4d6d;
+  margin: 10px 0 0;
+}
+
+h2 {
+  color: #ff6f91;
+  margin: 10px 0;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #444;
+}
+
+.message {
+  font-size: 15px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.date {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #ff4d6d;
+}
+
+/* Floating Nav Bar */
+.nav-bar {
+  position: fixed;
+  bottom: 20px;
+  display: flex;
+  gap: 15px;
+  background: white;
+  padding: 12px 18px;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
+}
+
+.nav-bar a {
+  text-decoration: none;
+  font-size: 20px;
+  transition: transform 0.2s;
+}
+
+.nav-bar a:hover {
+  transform: scale(1.3);
+}
+.love-card {
+  animation: softPop 1.2s ease, heartbeat 4s infinite;
+}
+
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.015); }
+  50%  { transform: scale(1); }
+  75%  { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+.petal {
+  position: fixed;
+  top: -50px;
+  width: 25px;
+  pointer-events: none;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(120vh) rotate(360deg);
+  }
+}
+.proposal-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.proposal-buttons {
+  margin-top: 15px;
+}
+
+.proposal-buttons button {
+  margin: 8px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+}
+
+#final-message {
+  margin-top: 15px;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  color: #ff4d6d;
+}
+
+#final-message.reveal {
+  opacity: 1;
+}
+.hug {
+  width: 180px;
+  margin-top: 15px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 1.2s ease;
+}
+
+.hug.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hidden {
+  display: none;
+}
+.memories-card {
+  max-width: 380px;
+}
+
+.memories-grid {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.memories-grid img,
+.memories-grid video {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+  transition: transform 0.3s;
+}
+
+.memories-grid img:hover,
+.memories-grid video:hover {
+  transform: scale(1.1);
+}
+/* ===== FULLSCREEN SLIDESHOW OVERRIDE ===== */
+
+.slideshow-body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.slideshow-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#slide-image {
+  max-width: 96vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 30px;
+  box-shadow: 0 30px 80px rgba(255, 77, 109, 0.6);
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.slide-caption {
+  position: fixed;
+  bottom: 90px;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  opacity: 0.9;
+}
+
+.slideshow-controls {
+  position: fixed;
+  bottom: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.slideshow-controls button,
+.slideshow-controls a {
+  background: #ff4d6d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* ===== FORCE FULLSCREEN SLIDESHOW ===== */
+
+/* ===== FULLSCREEN SLIDESHOW ===== */
+
+body.slideshow-body {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: black !important;
+  overflow: hidden !important;
+}
+
+.slideshow-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Blurred background */
+#bg-blur {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  filter: blur(40px) brightness(0.4);
+  z-index: 0;
+}
+
+/* Main image */
+#slide-image {
+  position: relative;
+  z-index: 2;
+  max-height: 88vh;
+  max-width: 420px;
+  width: auto;
+  border-radius: 35px;
+  box-shadow:
+    0 0 60px rgba(255, 77, 109, 0.6),
+    0 30px 80px rgba(255, 77, 109, 0.8);
+  transition: opacity 1.5s ease;
+}
+
+/* ===== ABSOLUTE SLIDESHOW FIX ===== */
+
+body.slideshow-body {
+  display: block !important;   /* 🔥 THIS IS THE KEY */
+  margin: 0 !important;
+  padding: 0 !important;
+  background: black !important;
+  overflow: hidden !important;
+}
+#bg-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  filter: blur(40px) brightness(0.4);
+  z-index: 0;
+}
+#slide-image {
+  position: relative;
+  z-index: 2;
+}
+/* ===== CLICK HEART EFFECT ===== */
+.heart {
+  position: fixed;
+  font-size: 18px;
+  color: #ff4d6d;
+  pointer-events: none;
+  animation: floatHeart 1.8s ease forwards;
+  z-index: 3;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.4);
+    opacity: 0;
+  }
+}
+/* ===== BACKGROUND SPARKLES ===== */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  animation: sparkleFloat 3.5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.5);
+  }
+}
